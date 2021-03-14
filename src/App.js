@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React from 'react';
+import Landing from './components/landing/Landing';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+import Post from './components/post/Post';
+import UpdatePosts from './components/updatePosts/UpdatePosts';
+import CategoryArray from './components/renderCategories/CategoryArray';
+import UpdateCategories from './components/updateCategories/UpdateCategories';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+    <Switch>
+    <Route exact path = '/' component={Landing}/>
+    <Route exact path = '/create-post' component={Post}/>
+    <Route exact path = '/update-post/:id' component={UpdatePosts}/>
+    <Route exact path = '/categories' component={CategoryArray}/>
+    <Route exact path = '/update-categories/:name' component={UpdateCategories}/>
+    </Switch>
+    </Router>
   );
 }
 
